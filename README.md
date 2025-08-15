@@ -59,11 +59,9 @@ The infrastructure includes:
 
 ---
 
-## 📋 Prerequisites
-Before deploying, ensure you have:  
+## 📋 Prerequisites 
 - An **AWS account** with appropriate IAM permissions  
-- **Terraform CLI** installed ([Download Terraform](https://developer.hashicorp.com/terraform/downloads))  
-- **Terraform Cloud** account for remote state management  
+- **Terraform CLI**   
 - AWS CLI configured locally:  
   ```bash
   aws configure
