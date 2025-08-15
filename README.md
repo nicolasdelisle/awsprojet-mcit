@@ -1,39 +1,77 @@
 # awsprojet-mcit
-diagram using from website
+
+This project demonstrates the deployment of a two-tier AWS architecture to host a standard web application with a database, using Terraform for Infrastructure as Code (IaC) and Terraform Cloud for CI/CD automation.
+
+diagram using from website:
 ![Project Graph](images/graph.webp)
 
--First what is the purpose of these project. Its to create a ressource to be able to host a standart web application with data base.
+🎯 Objectives
 
--Create two-tier AWS architecture containing the following:
--Custom VPC with:
+Host a lightweight web application with a MySQL database
+
+Use AWS best practices for security and scalability
+
+Deploy infrastructure using Terraform for repeatability and automation
+
+🏗 Architecture
+
+The infrastructure includes:
+
+Custom VPC
+
 2 Public Subnets for the Web Server Tier
 
 2 Private Subnets for the RDS Tier
 
--Appropriate route tables
+Appropriate Route Tables for internet and internal communication
 
--Launch an EC2 Instance with your choice of webserver in each public web tier subnet (apache, NGINX, etc).
+2 EC2 Instances (Apache or NGINX) in the public subnets
 
--One RDS MySQL Instance (micro) in the private RDS subnets
+1 RDS MySQL Instance (micro) in the private subnets
 
--Security Groups properly configured for needed resources ( web servers, RDS)
+Security Groups for controlled access
 
--Deploy this using Terraform Cloud as a CI/CD tool to check your build.
+Application Load Balancer for traffic distribution
 
-Here i am gonna explain how i decided each ressource i will use:
+Automated deployment via Terraform Cloud
 
--Choosing a region to create all my ressource in it. That would be AWS us-east-1 region since its to closest region to where the client would be using it from.
+🔧 Design Decisions
 
--Using a vpc to isolate my project in the cloud.
+Region Selection
 
--For the ec2 its gonna be the t2.micro since the web server will be ligth its enough to host it. Also using public subnet so it has access to internet.
+AWS us-east-1 was chosen for low latency to the client location.
 
--Using a load balancer so it will distribute the incomming traffic coming to the web application.
+VPC Isolation
 
--Rds will be on private subnet for security purpose since it doesnt need access to the internet.
+A dedicated VPC ensures network separation from other environments.
 
--For security purpose only poort that are essential will be open ssh(22) (http(80)since its free not viable in real life project should go with a https(443))
+EC2 Configuration
 
--Using terraform since once the code writted is quicker to make adjustment if need to scale afterward or need to recreate a similar project.
+Instance Type: t2.micro – suitable for a lightweight application
 
+Public subnets with internet access for serving content
+
+Load Balancer
+
+Distributes incoming traffic between the two web servers for high availability.
+
+RDS Database
+
+MySQL deployed in private subnets for security
+
+No internet access – accessible only by web server tier
+
+Security Groups
+
+Web Server SG: Allow SSH (22) and HTTP (80)
+
+RDS SG: Allow MySQL (3306) only from the Web Server SG
+
+Production note: Use HTTPS (443) instead of HTTP for secure communication
+
+Terraform Advantages
+
+Easy scaling and updates
+
+Reusable code for similar future projects
 
