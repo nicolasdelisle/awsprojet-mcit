@@ -44,9 +44,9 @@ The infrastructure includes:
    
 t2.micro:
 
-   - 0.0116$/hour for on demand
+   - 0.0116$/hour for on demand each
    - since we getting 2 its gonna be around 16.8$per month
-   - if you reserve for 3 year it goes to 4.23$/month
+   - or if you reserve for 3 year it goes to 8.46$/month
 
 4. **Load Balancer**  
    Distributes incoming traffic between the two web servers for high availability.  
