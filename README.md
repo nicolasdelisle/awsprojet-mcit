@@ -40,6 +40,11 @@ The infrastructure includes:
 3. **EC2 Configuration**  
    - Instance Type: `t2.micro` – suitable for a lightweight application  
    - Public subnets with internet access for serving content  
+   heres the pricing for the ec2 we are going to use:
+   
+t2.micro:
+0.0116$/hour
+since we getting 2 its gonna be around 16.8$per month
 
 4. **Load Balancer**  
    Distributes incoming traffic between the two web servers for high availability.  
