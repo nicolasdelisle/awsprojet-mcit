@@ -66,6 +66,7 @@ You are charged only on the dimension with the highest usage. An LCU contains:
    - 1,000 rule evaluations per second
 
 4.2   **load balancer code**
+```hcl
 # Create a Load Balancer
 resource "aws_lb" "myalb" {
   name               = "2TierApplicationLoadBalancer"
