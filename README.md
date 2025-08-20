@@ -43,8 +43,9 @@ The infrastructure includes:
    heres the pricing for the ec2 we are going to use:
    
 t2.micro:
-0.0116$/hour
-since we getting 2 its gonna be around 16.8$per month
+
+   - 0.0116$/hour
+   - since we getting 2 its gonna be around 16.8$per month
 
 4. **Load Balancer**  
    Distributes incoming traffic between the two web servers for high availability.  
@@ -60,7 +61,7 @@ here some technical detail of how LCU are calculated:
 An LCU measures the dimensions on which the Application Load Balancer processes your traffic (averaged over an hour). The four dimensions measured are:
 
    - New connections: Number of newly established connections per second. Typically, many requests are sent per connection. 
-   - Active connections: Number of active connections per minute.
+ CActive connections: Number of active connections per minute.
    - Processed bytes: The number of bytes processed by the load balancer in GBs for HTTP(S) requests and responses.
    - Rule evaluations: The product of the number of rules processed by your load balancer and the request rate. The first 10 processed rules are free (Rule evaluations = Request rate * (Number of rules processed - 10 free rules).
 You are charged only on the dimension with the highest usage. An LCU contains:
