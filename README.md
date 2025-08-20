@@ -43,6 +43,26 @@ The infrastructure includes:
 
 4. **Load Balancer**  
    Distributes incoming traffic between the two web servers for high availability.  
+   heres a list of pricing for the region we gonna deploy:
+   - $0.0225 per Application Load Balancer-hour 
+   - $0.008 per LCU-hour 
+   - $0.005 per hour per Trust Store Associated with Application Load Balancer when using Mutual TLS 
+   - $0.008 per reserved LCU-hour
+   
+   here some technical detail of how LCU are calculated 
+   LCU Details
+An LCU measures the dimensions on which the Application Load Balancer processes your traffic (averaged over an hour). The four dimensions measured are:
+
+New connections: Number of newly established connections per second. Typically, many requests are sent per connection. 
+Active connections: Number of active connections per minute.
+Processed bytes: The number of bytes processed by the load balancer in GBs for HTTP(S) requests and responses.
+Rule evaluations: The product of the number of rules processed by your load balancer and the request rate. The first 10 processed rules are free (Rule evaluations = Request rate * (Number of rules processed - 10 free rules).
+You are charged only on the dimension with the highest usage. An LCU contains:
+
+25 new connections per second.
+3,000 active connections per minute or 1,500 active connections per minute while using Mutual TLS.
+1 GB per hour for Amazon Elastic Compute Cloud (EC2) instances, containers, and IP addresses as targets, and 0.4 GB per hour for Lambda functions as targets. When using the Mutual TLS feature, data processed includes the bytes for the certificate metadata that the load balancer inserts into headers for every request that is routed to the targets.
+1,000 rule evaluations per second
 
 5. **RDS Database**  
    - MySQL deployed in **private subnets** for security  
