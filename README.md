@@ -48,8 +48,6 @@ The infrastructure includes:
    - $0.008 per LCU-hour 
    - $0.005 per hour per Trust Store Associated with Application Load Balancer when using Mutual TLS 
    - $0.008 per reserved LCU-hour
-   
-   here some technical detail of how LCU are calculated:
 
 4.1  **LCU Details**
 here some technical detail of how LCU are calculated:
