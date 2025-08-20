@@ -96,7 +96,7 @@ resource "aws_security_group" "albsg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
-
+```
 5. **RDS Database**  
    - MySQL deployed in **private subnets** for security  
    - No internet access – accessible only by web server tier  
