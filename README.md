@@ -142,7 +142,8 @@ resource "aws_security_group" "albsg" {
    - for both the security group and key pair there should be no cost associate to it.
 
 8. **Monitoring**
-Here some monitoring tool to use to minimise down time and identify upcomming problem before they escalade too far
+
+- Here some monitoring tool to use to minimise down time and identify upcomming problem before they escalade too far
 
 - Amazon CloudWatch for EC2: 
 Collect metrics from Amazon EC2 instances (CPU utilization, network I/O, disk I/O), Application Load Balancers (request count, latency, healthy host count), and Auto Scaling Groups (instance health, scaling activities
