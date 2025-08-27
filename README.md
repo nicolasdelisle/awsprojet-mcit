@@ -142,6 +142,18 @@ resource "aws_security_group" "albsg" {
    - for both the security group and key pair there should be no cost associate to it.
 
 8. **Monitoring**
+- Amazon CloudWatch for EC2: 
+Collect metrics from Amazon EC2 instances (CPU utilization, network I/O, disk I/O), Application Load Balancers (request count, latency, healthy host count), and Auto Scaling Groups (instance health, scaling activities
+
+- Amazon CloudWatch for data base (RDS):
+Monitor key metrics for Amazon RDS instances like CPU utilization, database connections, free storage space, read/write IOPS, and network throughput.
+
+- Amazon CloudWatch for load balancer:
+ Monitor Network Load Balancer (NLB) metrics, such as active flow count and processed bytes
+
+- Amazon GuardDuty: Continuously monitor for malicious activity and unauthorized behavior.
+
+- Amazon SNS: Send notifications to email, SMS, or other endpoints for critical events.
 
 9. **Terraform Advantages**  
    - Easy scaling and updates  
