@@ -7,6 +7,10 @@ graph from web site not my original:
 ![Project Graph](images/graph.webp)
 
 ---
+## Scenario 
+- Hosting a blog using apache with linux as OS.
+- Will be using a load balancer to direct traffic to the blog.
+- Will be using RDS to make back up of the blog in case of problem with the EC2
 
 ## 🎯 Objectives
 - Host a lightweight web application with a MySQL database  
