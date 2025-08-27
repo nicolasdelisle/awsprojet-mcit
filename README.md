@@ -40,8 +40,17 @@ The infrastructure includes:
 
    - pricing
    Region:
-   - US East (N. Virginia) the region choice mostly impact the pricing of the vpc service offered by aws. 
-2. **VPC Isolation**  
+   - US East (N. Virginia) the region choice mostly impact the pricing of the vpc service offered by aws.
+2. **Internet gateway basics**
+
+To use an internet gateway, you must attach it to a VPC and configure routing.
+
+Routing configuration
+If a subnet is associated with a route table that has a route to an internet gateway, it's known as a public subnet. If a subnet is associated with a route table that does not have a route to an internet gateway, it's known as a private subnet.
+
+In your public subnet's route table, you can specify a route for the internet gateway to all destinations not explicitly known to the route table (0.0.0.0/0 for IPv4 
+
+3. **VPC Isolation**  
    A dedicated VPC ensures network separation from other environments. 
 
    *Pricing*
@@ -50,7 +59,7 @@ The infrastructure includes:
 - each public ipv4 is 0.005$/hour  = for 3 (2 ec2, 1load balancer) 10.8$/month
 - You are charged $0.75 per VPC Route Server Endpoint per hour  = **still confused** 
 
-3. **EC2 Configuration**  
+4. **EC2 Configuration**  
    - Instance Type: `t2.micro` – suitable for a lightweight application  
    - Public subnets with internet access for serving content
 
@@ -60,7 +69,7 @@ t2.micro:
    - since we getting 2 its gonna be around 16.8$per month
    - or if you reserve for 3 year it goes to 8.46$/month
 
-4. **Load Balancer**  
+5. **Load Balancer**  
    Distributes incoming traffic between the two web servers for high availability.  
 
    *Pricing*:
@@ -69,7 +78,7 @@ t2.micro:
    - $0.005 per hour per Trust Store Associated with Application Load Balancer when using Mutual TLS 
    - $0.008 per reserved LCU-hour
 
-4.1  **LCU Details**
+5.1  **LCU Details**
 here some technical detail of how LCU are calculated:
 
 An LCU measures the dimensions on which the Application Load Balancer processes your traffic (averaged over an hour). The four dimensions measured are:
@@ -85,7 +94,7 @@ You are charged only on the dimension with the highest usage. An LCU contains:
    - 1 GB per hour for Amazon Elastic Compute Cloud (EC2) instances, containers, and IP addresses as targets, and 0.4 GB per hour for Lambda functions as targets. When using the Mutual TLS feature, data processed includes the bytes for the certificate metadata that the load balancer inserts into headers for every request that is routed to the targets.
    - 1,000 rule evaluations per second
 
-4.2   **load balancer code**
+5.2   **load balancer code**
 ```hcl
 # Create a Load Balancer
 resource "aws_lb" "myalb" {
@@ -117,14 +126,14 @@ resource "aws_security_group" "albsg" {
   }
 }
 ```
-5. **RDS Database**  
+6. **RDS Database**  
    - MySQL deployed in **private subnets** for security  
    - No internet access – accessible only by web server tier  
 
     *Pricing*
    - If you take saving plan for 1 or 3 years the monthly cost will be estimated at 1.90$ or 1.31$ the longer the plan the bigger the discount get.
 
-6. **Security Groups**  
+7. **Security Groups**  
    - **Web Server SG:** Allow SSH (22) and HTTP (80)  
    - **RDS SG:** Allow MySQL (3306) only from the Web Server SG  
    - Production note: Use HTTPS (443) instead of HTTP for secure communication  
@@ -132,7 +141,9 @@ resource "aws_security_group" "albsg" {
     *Pricing*
    - for both the security group and key pair there should be no cost associate to it.
 
-7. **Terraform Advantages**  
+8. **Monitoring**
+
+9. **Terraform Advantages**  
    - Easy scaling and updates  
    - Reusable code for similar future projects  
 
