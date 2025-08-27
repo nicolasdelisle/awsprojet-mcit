@@ -33,17 +33,26 @@ The infrastructure includes:
 
 1. **Region Selection**  
    AWS **us-east-1** was chosen for low latency to the client location.  
-
+   
+   - pricing
+   Region:
+   - US East (N. Virginia)
+   -  You are charged $0.75 per VPC Route Server Endpoint per hour
 2. **VPC Isolation**  
-   A dedicated VPC ensures network separation from other environments.  
+   A dedicated VPC ensures network separation from other environments. 
+
+   *Pricing*
+- Nat gateway 0.045$/hour 
+- each ip address is 0.00027$/hour for ipam
+- each public ipv4 is 0.005$/hour
+- You are charged $0.75 per VPC Route Server Endpoint per hour
 
 3. **EC2 Configuration**  
    - Instance Type: `t2.micro` – suitable for a lightweight application  
-   - Public subnets with internet access for serving content  
-   heres the pricing for the ec2 we are going to use:
-   
-t2.micro:
+   - Public subnets with internet access for serving content
 
+   *Pricing*
+t2.micro:
    - 0.0116$/hour for on demand each
    - since we getting 2 its gonna be around 16.8$per month
    - or if you reserve for 3 year it goes to 8.46$/month
@@ -108,10 +117,16 @@ resource "aws_security_group" "albsg" {
    - MySQL deployed in **private subnets** for security  
    - No internet access – accessible only by web server tier  
 
+    *Pricing*
+   - If you take saving plan for 1 or 3 years the monthly cost will be estimated at 1.90$ or 1.31$ the longer the plan the bigger the discount get.
+
 6. **Security Groups**  
    - **Web Server SG:** Allow SSH (22) and HTTP (80)  
    - **RDS SG:** Allow MySQL (3306) only from the Web Server SG  
    - Production note: Use HTTPS (443) instead of HTTP for secure communication  
+
+    *Pricing*
+   - for both the security group and key pair there should be no cost associate to it.
 
 7. **Terraform Advantages**  
    - Easy scaling and updates  
