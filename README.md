@@ -33,19 +33,18 @@ The infrastructure includes:
 
 1. **Region Selection**  
    AWS **us-east-1** was chosen for low latency to the client location.  
-   
+
    - pricing
    Region:
-   - US East (N. Virginia)
-   -  You are charged $0.75 per VPC Route Server Endpoint per hour
+   - US East (N. Virginia) the region choice mostly impact the pricing of the vpc service offered by aws. 
 2. **VPC Isolation**  
    A dedicated VPC ensures network separation from other environments. 
 
    *Pricing*
-- Nat gateway 0.045$/hour 
-- each ip address is 0.00027$/hour for ipam
-- each public ipv4 is 0.005$/hour
-- You are charged $0.75 per VPC Route Server Endpoint per hour
+- Nat gateway 0.045$/hour   = 32.4$/month 
+- each ip address is 0.00027$/hour for ipam = for 5 ip address (2 ec2, 1 load balancer, 2 rds) 0.972$/month
+- each public ipv4 is 0.005$/hour  = for 3 (2 ec2, 1load balancer) 10.8$/month
+- You are charged $0.75 per VPC Route Server Endpoint per hour  = **still confused** 
 
 3. **EC2 Configuration**  
    - Instance Type: `t2.micro` – suitable for a lightweight application  
@@ -59,8 +58,9 @@ t2.micro:
 
 4. **Load Balancer**  
    Distributes incoming traffic between the two web servers for high availability.  
-   heres a list of pricing for the region we gonna deploy:
-   - $0.0225 per Application Load Balancer-hour 
+
+   *Pricing*:
+   - $0.0225 per Application Load Balancer-hour       = 16.2$/month                                     
    - $0.008 per LCU-hour 
    - $0.005 per hour per Trust Store Associated with Application Load Balancer when using Mutual TLS 
    - $0.008 per reserved LCU-hour
@@ -140,3 +140,6 @@ resource "aws_security_group" "albsg" {
 - AWS CLI configured locally:  
   ```bash
   aws configure
+
+## Resume of pricing per month if going with 3 year plan 
+- in total would be estimated at 70.142/month *(excluding load blancer LCU and VPC route server endpoint)*
