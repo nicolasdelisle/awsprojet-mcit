@@ -7,16 +7,15 @@ graph from web site not my original:
 ![Project Graph](images/graph.webp)
 
 ---
-## Scenario 
-- Hosting a blog using apache with linux as OS.
-- Will be using a load balancer to direct traffic to the blog.
-- Will be using RDS to make back up of the blog in case of problem with the EC2
 
 ## 🎯 Objectives
 - Host a lightweight web application with a MySQL database  
 - Use AWS best practices for security and scalability  
 - Deploy infrastructure using Terraform for repeatability and automation  
-
+- Hosting a blog using yumapache with amazonlinux2 as OS.
+- Will be using a load balancer to direct traffic to the blog.
+- Will be using RDS to make back up of the blog in case of problem with the EC2.
+- Since its a blog we gonna use only TCP protocol to ensure reliable connection.
 ---
 
 ## 🏗 Architecture
