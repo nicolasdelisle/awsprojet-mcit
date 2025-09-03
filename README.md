@@ -153,9 +153,9 @@ Monitor key metrics for Amazon RDS instances like CPU utilization, database conn
 - Amazon CloudWatch for load balancer:
  Monitor Network Load Balancer (NLB) metrics, such as active flow count and processed bytes
 This will be what ill monitor using cloudwatch:
-5XX errors (alb_5xx)
-High latency (alb_latency)
-Request count spikes (alb_request_count)
+- 5XX errors (alb_5xx)
+- High latency (alb_latency)
+- Request count spikes (alb_request_count)
 
 - Amazon GuardDuty: Continuously monitor for malicious activity and unauthorized behavior.
 
