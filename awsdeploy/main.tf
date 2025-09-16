@@ -173,7 +173,7 @@ resource "aws_security_group" "db_tier" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
-
+# here it only say hello world but would be the code of client web application 
 resource "aws_instance" "web_tier" {
   count                       = 2
   ami                         = var.ami_id

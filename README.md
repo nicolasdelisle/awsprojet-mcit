@@ -159,4 +159,4 @@ Store and analyze logs from various sources for centralized monitoring and troub
 | CloudWatch Basic        | -        | Free tier           | $0                |
 | **Total Estimate**      |          |                     | **≈ $70.14/month** |
 
-- in total would be estimated at 70.142/month *(excluding load blancer LCU and VPC route server endpoint)*
+- in total would be estimated at 70.142/month *(excluding load blancer LCU and Cloud watch since both are traffic/usage dependent)*
