@@ -21,7 +21,7 @@ graph from web site not my original:
 ## 🏗 Architecture
 The infrastructure includes:  
 - **Custom VPC**
-  - 2 Public Subnets for the **Web Server Tier**  
+  - 2 Public Subnets for the **Web Server Tier**  and **The load balancer**
   - 2 Private Subnets for the **RDS Tier**  
 - **Appropriate Route Tables** for internet and internal communication  
 - **2 EC2 Instances** (Apache or NGINX) in the public subnets  
