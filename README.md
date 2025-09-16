@@ -145,5 +145,18 @@ Store and analyze logs from various sources for centralized monitoring and troub
   ```bash
   aws configure
 
-## Resume of pricing per month if going with 3 year plan 
+##  Pricing (Monthly Estimate with 3-Year Reserved Plans)
+
+| Resource                | Quantity | Unit Price          | Est. Monthly Cost |
+|--------------------------|----------|---------------------|-------------------|
+| NAT Gateway             | 1        | $0.045/hr           | $32.40            |
+| IPAM Addresses          | 5        | $0.00027/hr         | $0.97             |
+| Public IPv4             | 3        | $0.005/hr           | $10.80            |
+| EC2 (t2.micro)          | 2        | $8.46 (reserved)    | $16.92            |
+| RDS MySQL (db.t3.micro) | 1        | $1.31–$1.90 (reserved) | $1.90          |
+| Load Balancer (ALB)     | 1        | $0.0225/hr          | $16.20            |
+| Security Groups / Key Pairs | -    | Free                | $0                |
+| CloudWatch Basic        | -        | Free tier           | $0                |
+| **Total Estimate**      |          |                     | **≈ $70.14/month** |
+
 - in total would be estimated at 70.142/month *(excluding load blancer LCU and VPC route server endpoint)*
