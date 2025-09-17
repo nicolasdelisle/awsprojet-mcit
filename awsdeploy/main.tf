@@ -182,13 +182,14 @@ resource "aws_instance" "web_tier" {
   vpc_security_group_ids      = [aws_security_group.web_tier.id]
   associate_public_ip_address = true
   key_name                    = var.key_name
+
 # here it only say hello world but would be the code of client web application 
   user_data = <<-EOF
     #!/bin/bash
-    yum update -y
-    yum install -y httpd
-    systemctl enable httpd
-    systemctl start httpd
+    sudo yum update -y
+    sudo yum install -y httpd
+    sudo systemctl enable httpd
+    sudo systemctl start httpd
     echo "<html><body><h1>Hello World from Web Tier ${count.index + 1}!</h1></body></html>" > /var/www/html/index.html
   EOF
 
@@ -285,6 +286,12 @@ resource "aws_cloudwatch_metric_alarm" "alb_request_count" {
   }
 }
 
+resource "random_password" "db_pass" {
+  length           = 16
+  special          = true
+  override_special = "!#$%^&*()_+-=[]{}|:,.?"
+}
+
 resource "aws_db_subnet_group" "sub_4_db" {
   name       = "sub_4_db"
   subnet_ids = [aws_subnet.private1.id, aws_subnet.private2.id]
@@ -300,6 +307,6 @@ resource "aws_db_instance" "the_db" {
   vpc_security_group_ids = [aws_security_group.db_tier.id]
   db_name                = "appdb"
   username               = var.db_username
-  password               = var.db_password
+  password               = random_password.db_pass.result
   skip_final_snapshot    = true
 }

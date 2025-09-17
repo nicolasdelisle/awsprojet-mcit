@@ -139,7 +139,7 @@ Store and analyze logs from various sources for centralized monitoring and troub
 ---
 
 ## 📋 Prerequisites 
-- An **AWS account** with appropriate IAM permissions  
+- An **AWS account** with appropriate IAM permissions  (those are permission to create ressources for ec2, dynamodb, rds, s3, vpc and cloudwatch)
 - **Terraform CLI**   
 - AWS CLI configured locally:  
   ```bash
